@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ survey.title }}</title>
+</head>
+<body>
+    <h1>{{ survey.title }}</h1>
+
+    <form method="post">
+        <p>{{ question.text }}</p>
+        {% for option in question.options %}
+            <label>
+                <input type="radio" name="{{ question.id }}" value="{{ option }}" required>
+                {{ option }}
+            </label><br>
+        {% endfor %}
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">Back to welcome page</a></p>
+</body>
+</html>

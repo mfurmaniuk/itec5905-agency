@@ -3,11 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Thank you</title>
+    <style>
+        .profile-result {
+            background-color: #f0f8ff;
+            border: 2px solid #0066cc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .profile-title {
+            font-size: 24px;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        .score-breakdown {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+        }
+        .score-item {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Thank you!</h1>
-    <p>You answered: <strong>{{ answer }}</strong> to the question:</p>
-    <p><em>{{ question_text }}</em></p>
+    <h1>Thank you for completing the survey!</h1>
+    
+    {% if profile_result %}
+    <div class="profile-result">
+        <div class="profile-title">Your Microaggression Vulnerability Profile:</div>
+        <h2 style="color: #0066cc; margin-top: 5px;">{{ profile_result.dominant }}</h2>
+        
+        <div class="score-breakdown">
+            <strong>Score Breakdown:</strong>
+            {% for profile, score in profile_result.scores.items() %}
+            <div class="score-item">
+                {{ profile }}: {{ score }} point{{ 's' if score != 1 else '' }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <h2>Your Responses:</h2>
+    {% for question in questions %}
+        <div style="margin-bottom: 20px;">
+            <p><strong>{{ loop.index }}. {{ question.text }}</strong></p>
+            <p style="margin-left: 20px; color: #0066cc;">
+                Your answer: <strong>{{ answers[question.id] }}</strong>
+                {% if question.profiles and answers[question.id] in question.profiles %}
+                    <span style="color: #666; font-style: italic;">
+                        → {{ question.profiles[answers[question.id]] }}
+                    </span>
+                {% endif %}
+            </p>
+        </div>
+    {% endfor %}
 
     <p><a href="{{ url_for('index') }}">Back to welcome page</a></p>
 </body>

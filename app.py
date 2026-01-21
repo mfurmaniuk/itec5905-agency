@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import os
+from collections import Counter
 
 app = Flask(__name__)
 
@@ -11,28 +12,61 @@ def load_survey():
     with open(json_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def calculate_profile(survey_data, answers):
+    """Calculate the microaggression vulnerability profile based on answers."""
+    profile_scores = Counter()
+    
+    for question in survey_data["questions"]:
+        question_id = question["id"]
+        answer = answers.get(question_id)
+        
+        # Check if this question has profile mappings
+        if answer and "profiles" in question and question["profiles"]:
+            profile = question["profiles"].get(answer)
+            if profile:
+                profile_scores[profile] += 1
+    
+    # Determine the dominant profile (most common)
+    if profile_scores:
+        dominant_profile = profile_scores.most_common(1)[0][0]
+        return {
+            "dominant": dominant_profile,
+            "scores": dict(profile_scores)
+        }
+    return None
+
 @app.route("/")
 def index():
     """Welcome page with link to survey."""
     return render_template("index.html")
 
+@app.route("/about")
+def about():
+    """About page."""
+    return render_template("about.html")
+
 @app.route("/survey", methods=["GET", "POST"])
 def survey():
     survey_data = load_survey()
-    question = survey_data["questions"][0]  # only one question for now
-
+    
     if request.method == "POST":
-        # Get selected answer
-        answer = request.form.get(question["id"])
-        # For now we just show a simple thank you page;
-        # in a real app you would store this in a database or file.
+        # Collect all answers
+        answers = {}
+        for question in survey_data["questions"]:
+            answers[question["id"]] = request.form.get(question["id"])
+        
+        # Calculate profile
+        profile_result = calculate_profile(survey_data, answers)
+        
         return render_template(
             "thank_you.html",
-            answer=answer,
-            question_text=question["text"]
+            answers=answers,
+            questions=survey_data["questions"],
+            profile_result=profile_result
         )
 
-    return render_template("survey.html", survey=survey_data, question=question)
+    # GET request - show the survey with all questions
+    return render_template("survey.html", survey=survey_data)
 
 if __name__ == "__main__":
     # Development server

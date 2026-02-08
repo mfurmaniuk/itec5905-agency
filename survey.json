@@ -3,94 +3,273 @@
   "questions": [
     {
       "id": "q1",
-      "text": "How are you today?",
+      "text": "Type or place of residence",
       "options": [
-        "Very Positive",
-        "Positive",
-        "Neutral",
-        "Negative"
+        "Urban",
+        "Rural"
       ],
-      "profiles": {}
+      "scoring": {}
     },
     {
       "id": "q2",
-      "text": "When someone dismisses your idea in a meeting, what is your most common internal reaction?",
+      "text": "Who typically makes decisions about your personal healthcare?",
       "options": [
-        "I ask a clarifying question to understand the dismissal",
-        "I restate my idea more clearly or assertively",
-        "I feel uncomfortable but stay silent",
-        "I assume my idea wasn't valuable and move on"
+        "You alone",
+        "You and your husband",
+        "You and others",
+        "Your husband",
+        "Someone else",
+        "Others",
+        "NA"
       ],
-      "profiles": {
-        "I ask a clarifying question to understand the dismissal": "Strategic Responder",
-        "I restate my idea more clearly or assertively": "Direct Advocate",
-        "I feel uncomfortable but stay silent": "Avoider",
-        "I assume my idea wasn't valuable and move on": "Internalizer"
-      }
+      "scoring": {
+        "You alone": 1,
+        "You and your husband": 2,
+        "You and others": 3,
+        "Your husband": 4,
+        "Someone else": 5,
+        "Others": 6,
+        "NA": 7
+      },
+      "agency": "Autonomy"
     },
     {
       "id": "q3",
-      "text": "If a colleague makes a subtly biased comment toward you, what are you most likely to do?",
+      "text": "Who has authority over major household financial purchases?",
       "options": [
-        "Address it calmly in the moment",
-        "Laugh it off to avoid tension",
-        "Document it and bring it up privately later",
-        "Replay it later and wish you had responded"
+        "You alone",
+        "You and your husband",
+        "You and others",
+        "Your husband",
+        "Someone else",
+        "Others",
+        "NA"
       ],
-      "profiles": {
-        "Address it calmly in the moment": "Direct Advocate",
-        "Laugh it off to avoid tension": "Avoider",
-        "Document it and bring it up privately later": "Strategic Responder",
-        "Replay it later and wish you had responded": "Internalizer"
-      }
+      "scoring": {
+        "You alone": 1,
+        "You and your husband": 2,
+        "You and others": 3,
+        "Your husband": 4,
+        "Someone else": 5,
+        "Others": 6,
+        "NA": 7
+      },
+      "agency": "Autonomy"
     },
     {
       "id": "q4",
-      "text": "How do you usually interpret microaggressions when they occur?",
+      "text": "Who descides whether you can visit family members?",
       "options": [
-        "I notice them but try to ignore them",
-        "I assume I'm being too sensitive",
-        "I see them as opportunities to assert my boundaries",
-        "I recognize them as inappropriate behavior"
+        "You alone",
+        "You and your husband",
+        "You and others",
+        "Your husband",
+        "Someone else",
+        "Others",
+        "NA"
       ],
-      "profiles": {
-        "I notice them but try to ignore them": "Avoider",
-        "I assume I'm being too sensitive": "Internalizer",
-        "I see them as opportunities to assert my boundaries": "Direct Advocate",
-        "I recognize them as inappropriate behavior": "Strategic Responder"
-      }
+      "scoring": {
+        "You alone": 1,
+        "You and your husband": 2,
+        "You and others": 3,
+        "Your husband": 4,
+        "Someone else": 5,
+        "Others": 6,
+        "NA": 7
+      },
+      "agency": "Autonomy"
     },
     {
       "id": "q5",
-      "text": "When advocating for yourself, what feels most challenging?",
+      "text": "What is the highest level of education you have completed?",
       "options": [
-        "Feeling unsure whether the issue is worth raising",
-        "I generally don't find self‑advocacy challenging",
-        "Worrying about being perceived as difficult",
-        "Finding the right words in the moment"
+        "No education",
+        "Primary school",
+        "Secondary school",
+        "Higher"
       ],
-      "profiles": {
-        "Feeling unsure whether the issue is worth raising": "Avoider",
-        "I generally don't find self‑advocacy challenging": "Direct Advocate",
-        "Worrying about being perceived as difficult": "Internalizer",
-        "Finding the right words in the moment": "Strategic Responder"
-      }
+      "scoring": {
+        "No education": 0,
+        "Primary school": 1,
+        "Secondary school": 2,
+        "Higher": 3
+      },
+      "agency": "Resilience"
     },
     {
       "id": "q6",
-      "text": "How do you typically respond after experiencing a microaggression?",
+      "text": "How do you rate the economic status of your household?  Based on assets and living conditions.",
       "options": [
-        "I reflect on how I might respond next time",
-        "I vent to someone I trust",
-        "I take action to address it directly or indirectly",
-        "I internalize it and question myself"
+        "Poorest",
+        "Poorer",
+        "Middle",
+        "Richer",
+        "Richest"
       ],
-      "profiles": {
-        "I reflect on how I might respond next time": "Strategic Responder",
-        "I vent to someone I trust": "Avoider",
-        "I take action to address it directly or indirectly": "Direct Advocate",
-        "I internalize it and question myself": "Internalizer"
-      }
+      "scoring": {
+        "Poorest": 1,
+        "Poorer": 2,
+        "Middle": 3,
+        "Richer": 4,
+        "Richest": 5
+      },
+      "agency": "Resilience"
+    },
+    {
+      "id": "q7",
+      "text": "How often do you read newspapers or magazines for information?",
+      "options": [
+        "Not at all",
+        "Less than once a week",
+        "At least once a week",
+        "Almost every day"
+      ],
+      "scoring": {
+        "Not at all": 1,
+        "Less than once a week": 2,
+        "At least once a week": 3,
+        "Almost every day": 4
+      },
+      "agency": "Resilience"
+    },
+    {
+      "id": "q8",
+      "text": "How often do you listen to the radio as a source of news or entertainment?",
+      "options": [
+        "Not at all",
+        "Less than once a week",
+        "At least once a week",
+        "Almost every day"
+      ],
+      "scoring": {
+        "Not at all": 1,
+        "Less than once a week": 2,
+        "At least once a week": 3,
+        "Almost every day": 4
+      },
+      "agency": "Resilience"
+    },
+    {
+      "id": "q9",
+      "text": "How often do you watch television as a source of news or entertainment?",
+      "options": [
+        "Not at all",
+        "Less than once a week",
+        "At least once a week",
+        "Almost every day"
+      ],
+      "scoring": {
+        "Not at all": 1,
+        "Less than once a week": 2,
+        "At least once a week": 3,
+        "Almost every day": 4
+      },
+      "agency": "Resilience"
+    },
+    {
+      "id": "q10",
+      "text": "Is wife beating justified when a wife is going out without her husband's permission?",
+      "options": [
+        "Yes",
+        "No",
+        "Don't know"
+      ],
+      "scoring": {
+        "Yes": 1,
+        "No": 0,
+        "Don't know": 7
+      },
+      "agency": "Vulnerability"
+    },
+    {
+      "id": "q11",
+      "text": "Is wife beating justified when a wife neglects childcare responsibilities?",
+      "options": [
+        "Yes",
+        "No",
+        "Don't know"
+      ],
+      "scoring": {
+        "Yes": 1,
+        "No": 0,
+        "Don't know": 7
+      },
+      "agency": "Vulnerability"
+    },
+    {
+      "id": "q12",
+      "text": "Is violence against women justified when a wife argues with her husband?",
+      "options": [
+        "Yes",
+        "No",
+        "Don't know"
+      ],
+      "scoring": {
+        "Yes": 1,
+        "No": 0,
+        "Don't know": 7
+      },
+      "agency": "Vulnerability"
+    },
+    {
+      "id": "q13",
+      "text": "Does a wife refusing sex justify violence against her?",
+      "options": [
+        "Yes",
+        "No",
+        "Don't know"
+      ],
+      "scoring": {
+        "Yes": 1,
+        "No": 0,
+        "Don't know": 7
+      },
+      "agency": "Vulnerability"
+    },
+    {
+      "id": "q14",
+      "text": "Is wife beating justified when food is burned?",
+      "options": [
+        "Yes",
+        "No",
+        "Don't know"
+      ],
+      "scoring": {
+        "Yes": 1,
+        "No": 0,
+        "Don't know": 7
+      },
+      "agency": "Vulnerability"
+    },
+    {
+      "id": "q15",
+      "text": "Who makes the decisions regarding the use of contraception within the household or relationship  ?",
+      "options": [
+        "Mainly respondent",
+        "Mainly husband",
+        "Joint decision",
+        "NA"
+      ],
+      "scoring": {
+        "Mainly respondent": 1,
+        "Mainly husband": 2,
+        "Joint decision": 3,
+        "NA": 7
+      },
+      "agency": "Vulnerability"
+    },
+    {
+      "id": "q16",
+      "text": "Has the respondent ever heard of AIDS  ?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "scoring": {
+        "Yes": 1,
+        "No": 0
+      },
+      "agency": "Vulnerability"
     }
   ]
 }

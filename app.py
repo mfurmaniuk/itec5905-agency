@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import os
-from collections import Counter
+from collections import defaultdict
 
 app = Flask(__name__)
 
@@ -12,28 +12,20 @@ def load_survey():
     with open(json_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def calculate_profile(survey_data, answers):
-    """Calculate the microaggression vulnerability profile based on answers."""
-    profile_scores = Counter()
-    
+def calculate_score(survey_data, answers):
+    """Sum numeric scores per agency from survey.json."""
+    agency_totals = defaultdict(int)
+
     for question in survey_data["questions"]:
-        question_id = question["id"]
-        answer = answers.get(question_id)
-        
-        # Check if this question has profile mappings
-        if answer and "profiles" in question and question["profiles"]:
-            profile = question["profiles"].get(answer)
-            if profile:
-                profile_scores[profile] += 1
-    
-    # Determine the dominant profile (most common)
-    if profile_scores:
-        dominant_profile = profile_scores.most_common(1)[0][0]
-        return {
-            "dominant": dominant_profile,
-            "scores": dict(profile_scores)
-        }
-    return None
+        agency = question.get("agency")
+        scoring = question.get("scoring") or {}
+        if not agency or not scoring:
+            continue
+        answer = answers.get(question["id"])
+        if answer is not None and answer in scoring:
+            agency_totals[agency] += scoring[answer]
+
+    return dict(agency_totals)
 
 @app.route("/")
 def index():
@@ -56,13 +48,13 @@ def survey():
             answers[question["id"]] = request.form.get(question["id"])
         
         # Calculate profile
-        profile_result = calculate_profile(survey_data, answers)
+        agency_result = calculate_score(survey_data, answers)
         
         return render_template(
             "thank_you.html",
             answers=answers,
             questions=survey_data["questions"],
-            profile_result=profile_result
+            agency_result=agency_result
         )
 
     # GET request - show the survey with all questions

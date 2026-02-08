@@ -29,16 +29,13 @@
 <body>
     <h1>Thank you for completing the survey!</h1>
     
-    {% if profile_result %}
+    {% if agency_result %}
     <div class="profile-result">
-        <div class="profile-title">Your Microaggression Vulnerability Profile:</div>
-        <h2 style="color: #0066cc; margin-top: 5px;">{{ profile_result.dominant }}</h2>
-        
+        <div class="profile-title">Scores by agency</div>
         <div class="score-breakdown">
-            <strong>Score Breakdown:</strong>
-            {% for profile, score in profile_result.scores.items() %}
+            {% for agency_name, total in agency_result.items() %}
             <div class="score-item">
-                {{ profile }}: {{ score }} point{{ 's' if score != 1 else '' }}
+                {{ agency_name }}: {{ total }}
             </div>
             {% endfor %}
         </div>

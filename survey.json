@@ -23,13 +23,13 @@
         "NA"
       ],
       "scoring": {
-        "You alone": 1,
-        "You and your husband": 2,
-        "You and others": 3,
-        "Your husband": 4,
-        "Someone else": 5,
-        "Others": 6,
-        "NA": 7
+        "You alone": 3,
+        "You and your husband": 3,
+        "You and others": 2,
+        "Your husband": 1,
+        "Someone else": 1,
+        "Others": 1,
+        "NA": 0
       },
       "agency": "Autonomy"
     },
@@ -46,13 +46,13 @@
         "NA"
       ],
       "scoring": {
-        "You alone": 1,
-        "You and your husband": 2,
-        "You and others": 3,
-        "Your husband": 4,
-        "Someone else": 5,
-        "Others": 6,
-        "NA": 7
+        "You alone": 3,
+        "You and your husband": 3,
+        "You and others": 2,
+        "Your husband": 1,
+        "Someone else": 1,
+        "Others": 1,
+        "NA": 0
       },
       "agency": "Autonomy"
     },
@@ -69,13 +69,13 @@
         "NA"
       ],
       "scoring": {
-        "You alone": 1,
-        "You and your husband": 2,
-        "You and others": 3,
-        "Your husband": 4,
-        "Someone else": 5,
-        "Others": 6,
-        "NA": 7
+        "You alone": 3,
+        "You and your husband": 3,
+        "You and others": 2,
+        "Your husband": 1,
+        "Someone else": 1,
+        "Others": 1,
+        "NA": 0
       },
       "agency": "Autonomy"
     },
@@ -125,10 +125,10 @@
         "Almost every day"
       ],
       "scoring": {
-        "Not at all": 1,
-        "Less than once a week": 2,
-        "At least once a week": 3,
-        "Almost every day": 4
+        "Not at all": 0,
+        "Less than once a week": 1,
+        "At least once a week": 2,
+        "Almost every day": 3
       },
       "agency": "Resilience"
     },
@@ -142,10 +142,10 @@
         "Almost every day"
       ],
       "scoring": {
-        "Not at all": 1,
-        "Less than once a week": 2,
-        "At least once a week": 3,
-        "Almost every day": 4
+        "Not at all": 0,
+        "Less than once a week": 1,
+        "At least once a week": 2,
+        "Almost every day": 3
       },
       "agency": "Resilience"
     },
@@ -159,10 +159,10 @@
         "Almost every day"
       ],
       "scoring": {
-        "Not at all": 1,
-        "Less than once a week": 2,
-        "At least once a week": 3,
-        "Almost every day": 4
+        "Not at all": 0,
+        "Less than once a week": 1,
+        "At least once a week": 2,
+        "Almost every day": 3
       },
       "agency": "Resilience"
     },
@@ -175,9 +175,9 @@
         "Don't know"
       ],
       "scoring": {
-        "Yes": 1,
-        "No": 0,
-        "Don't know": 7
+        "Yes": 0,
+        "No": 1,
+        "Don't know": 0
       },
       "agency": "Vulnerability"
     },
@@ -190,9 +190,9 @@
         "Don't know"
       ],
       "scoring": {
-        "Yes": 1,
-        "No": 0,
-        "Don't know": 7
+        "Yes": 0,
+        "No": 1,
+        "Don't know": 0
       },
       "agency": "Vulnerability"
     },
@@ -205,9 +205,9 @@
         "Don't know"
       ],
       "scoring": {
-        "Yes": 1,
-        "No": 0,
-        "Don't know": 7
+        "Yes": 0,
+        "No": 1,
+        "Don't know": 0
       },
       "agency": "Vulnerability"
     },
@@ -220,9 +220,9 @@
         "Don't know"
       ],
       "scoring": {
-        "Yes": 1,
-        "No": 0,
-        "Don't know": 7
+        "Yes": 0,
+        "No": 1,
+        "Don't know": 0
       },
       "agency": "Vulnerability"
     },
@@ -235,9 +235,9 @@
         "Don't know"
       ],
       "scoring": {
-        "Yes": 1,
-        "No": 0,
-        "Don't know": 7
+        "Yes": 0,
+        "No": 1,
+        "Don't know": 0
       },
       "agency": "Vulnerability"
     },
@@ -254,7 +254,7 @@
         "Mainly respondent": 1,
         "Mainly husband": 2,
         "Joint decision": 3,
-        "NA": 7
+        "NA": 0
       },
       "agency": "Vulnerability"
     },

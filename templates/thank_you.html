@@ -42,6 +42,22 @@
     </div>
     {% endif %}
 
+    {% if agency_comparisons %}
+    <div class="profile-result">
+        <div class="profile-title">How you compare to national averages</div>
+        <div class="score-breakdown">
+            {% for agency_name, info in agency_comparisons.items() %}
+            <div class="score-item">
+                {{ agency_name }}: your average
+                {{ "%.2f"|format(info.user_average) }}
+                is {{ info.position }} the national average
+                ({{ "%.2f"|format(info.national_average) }}).
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     <h2>Agency Scores of India</h2>
     <div class='tableauPlaceholder' id='viz1770716770508' style='position: relative'>
         <noscript>

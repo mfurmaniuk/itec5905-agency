@@ -5,6 +5,13 @@ from collections import defaultdict
 
 app = Flask(__name__)
 
+# National average scores per agency.
+NATIONAL_AVERAGES = {
+    "Autonomy": 2.6828,
+    "Resilience": 1.4845,
+    "Vulnerability": 1.0349,
+}
+
 def load_survey():
     """Load survey definition from JSON file."""
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -48,6 +55,28 @@ def calculate_score(survey_data, answers):
 
     return agency_averages
 
+def compare_to_national(agency_averages, national_averages):
+    """Build per-agency comparison vs national averages."""
+    comparisons = {}
+    for agency, user_avg in agency_averages.items():
+        nat_avg = national_averages.get(agency)
+        if nat_avg is None:
+            continue
+        diff = user_avg - nat_avg
+        if abs(diff) < 0.05:
+            position = "about the same as"
+        elif diff > 0:
+            position = "above"
+        else:
+            position = "below"
+        comparisons[agency] = {
+            "user_average": user_avg,
+            "national_average": nat_avg,
+            "difference": diff,
+            "position": position,
+        }
+    return comparisons
+
 @app.route("/")
 def index():
     """Welcome page with link to survey."""
@@ -68,14 +97,17 @@ def survey():
         for question in survey_data["questions"]:
             answers[question["id"]] = request.form.get(question["id"])
         
-        # Calculate profile
+        # Calculate average scores per agency
         agency_result = calculate_score(survey_data, answers)
-        
+        # Build comparison to national averages for each agency
+        agency_comparisons = compare_to_national(agency_result, NATIONAL_AVERAGES)
+
         return render_template(
             "thank_you.html",
             answers=answers,
             questions=survey_data["questions"],
-            agency_result=agency_result
+            agency_result=agency_result,
+            agency_comparisons=agency_comparisons,
         )
 
     # GET request - show the survey with all questions

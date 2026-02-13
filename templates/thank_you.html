@@ -26,7 +26,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #FFE4E1;">
     <h1>Thank you for completing the survey!</h1>
     
     {% if agency_result %}
@@ -52,6 +52,11 @@
                 {{ "%.2f"|format(info.user_average) }}
                 is {{ info.position }} the national average
                 ({{ "%.2f"|format(info.national_average) }}).
+                {% if info.message %}
+                <div style="margin-left: 20px; margin-top: 5px; font-style: italic; color: #555;">
+                    {{ info.message }}
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

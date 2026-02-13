@@ -69,11 +69,31 @@ def compare_to_national(agency_averages, national_averages):
             position = "above"
         else:
             position = "below"
+        
+        # Add contextual messages for specific agencies
+        message = None
+        if agency == "Autonomy":
+            if diff > 0:
+                message = "This suggests you tend to act independently and feel confident making your own decisions."
+            elif diff < 0:
+                message = "This may indicate a stronger preference for guidance or external support when making decisions."
+        elif agency == "Resilience":
+            if diff > 0:
+                message = "This suggests you generally recover well from challenges and adapt to stress."
+            elif diff < 0:
+                message = "This may indicate that stressful situations feel more difficult to bounce back from."
+        elif agency == "Vulnerability":
+            if diff > 0:
+                message = "This suggests you may be more sensitive to stress or emotional challenges."
+            elif diff < 0:
+                message = "This suggests a lower tendency toward emotional or stress-related vulnerability."
+        
         comparisons[agency] = {
             "user_average": user_avg,
             "national_average": nat_avg,
             "difference": diff,
             "position": position,
+            "message": message,
         }
     return comparisons
 

@@ -121,6 +121,15 @@ def survey():
         agency_result = calculate_score(survey_data, answers)
         # Build comparison to national averages for each agency
         agency_comparisons = compare_to_national(agency_result, NATIONAL_AVERAGES)
+        # Show low-autonomy tips when Autonomy is below national average
+        autonomy_info = agency_comparisons.get("Autonomy", {})
+        low_autonomy = autonomy_info.get("position") == "below"
+        # Show low-resilience tips when Resilience is below national average
+        resilience_info = agency_comparisons.get("Resilience", {})
+        low_resilience = resilience_info.get("position") == "below"
+        # Show high-vulnerability tips when Vulnerability is above national average
+        vulnerability_info = agency_comparisons.get("Vulnerability", {})
+        high_vulnerability = vulnerability_info.get("position") == "below"
 
         return render_template(
             "thank_you.html",
@@ -128,6 +137,9 @@ def survey():
             questions=survey_data["questions"],
             agency_result=agency_result,
             agency_comparisons=agency_comparisons,
+            low_autonomy=low_autonomy,
+            low_resilience=low_resilience,
+            high_vulnerability=high_vulnerability,
         )
 
     # GET request - show the survey with all questions

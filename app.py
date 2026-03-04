@@ -147,4 +147,6 @@ def survey():
 
 if __name__ == "__main__":
     # Development server
-    app.run(debug=True)
+    #app.run(debug=True)
+    # Production server
+    app.run(host='0.0.0.0', port=8080)

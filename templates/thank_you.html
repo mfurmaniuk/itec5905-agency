@@ -24,6 +24,68 @@
         .score-item {
             margin: 5px 0;
         }
+        .agency-score-item {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: left;
+            gap: 6px;
+            text-align: center;
+        }
+        .agency-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .score-value {
+            font-size: 5em;
+            font-weight: 800;
+            color: #0066cc;
+            line-height: 1;
+        }
+        .comparison-item {
+            margin: 14px 0;
+        }
+        .comparison-row {
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .comparison-agency {
+            font-size: 18px;
+            font-weight: 700;
+            color: #003d80;
+            min-width: 200px;
+        }
+        .comparison-metrics {
+            display: flex;
+            gap: 26px;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+        .comparison-metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 4px;
+            min-width: 160px;
+        }
+        .comparison-score {
+            font-size: 2em;
+            font-weight: 800;
+            color: #0066cc;
+            line-height: 1;
+        }
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+        }
     </style>
 </head>
 <body style="background-color: #FFE4E1;">
@@ -34,8 +96,9 @@
         <div class="profile-title">Average scores by agency</div>
         <div class="score-breakdown">
             {% for agency_name, total in agency_result.items() %}
-            <div class="score-item">
-                {{ agency_name }}: {{ "%.2f"|format(total) }}
+            <div class="agency-score-item">
+                <span class="score-value">{{ "%.2f"|format(total) }}</span>
+                <span class="agency-name">{{ agency_name }}</span>
             </div>
             {% endfor %}
         </div>
@@ -47,11 +110,20 @@
         <div class="profile-title">How you compare to national averages</div>
         <div class="score-breakdown">
             {% for agency_name, info in agency_comparisons.items() %}
-            <div class="score-item">
-                {{ agency_name }}: your average
-                {{ "%.2f"|format(info.user_average) }}
-                is {{ info.position }} the national average
-                ({{ "%.2f"|format(info.national_average) }}).
+            <div class="comparison-item">
+                <div class="comparison-row">
+                    <div class="comparison-agency">{{ agency_name }}</div>
+                    <div class="comparison-metrics">
+                        <div class="comparison-metric">
+                            <div class="comparison-score">{{ "%.2f"|format(info.user_average) }}</div>
+                            <div class="comparison-label">You</div>
+                        </div>
+                        <div class="comparison-metric">
+                            <div class="comparison-score">{{ "%.2f"|format(info.national_average) }}</div>
+                            <div class="comparison-label">National Average</div>
+                        </div>
+                    </div>
+                </div>
                 {% if info.message %}
                 <div style="margin-left: 20px; margin-top: 5px; font-style: italic; color: #555;">
                     {{ info.message }}
